@@ -1,0 +1,271 @@
+/* =========================================
+   1. 全局设置 (Global Reset & Typography)
+   ========================================= */
+:root {
+    --primary-color: #2563eb;       /* 科技蓝：用于按钮、链接、强调 */
+    --primary-hover: #1d4ed8;       /* 深蓝色：用于悬停状态 */
+    --bg-color: #f8f9fa;            /* 浅灰背景：比纯白更护眼 */
+    --card-bg: #ffffff;             /* 卡片背景：纯白 */
+    --text-main: #1f2937;           /* 深灰黑：正文颜色 */
+    --text-muted: #6b7280;          /* 浅灰色：辅助信息 */
+    --border-radius: 8px;           /* 圆角大小 */
+    --transition: all 0.3s ease;    /* 动画过渡 */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-color);
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* =========================================
+   2. 导航栏 (Navigation)
+   ========================================= */
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    font-weight: 500;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+/* =========================================
+   3. 通用容器 (Layout Utilities)
+   ========================================= */
+.container {
+    max-width: 1000px; /* 限制最大宽度，防止在大屏上太散 */
+    margin: 0 auto;
+    padding: 4rem 20px; /* 上下留白，左右留边 */
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+}
+
+/* =========================================
+   4. Hero Section (首屏视觉)
+   ========================================= */
+#hero {
+    min-height: 90vh; /* 占满90%屏幕高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--text-main) 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* 文字渐变色效果 */
+}
+
+#hero p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+/* 按钮样式 */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+button, .btn-outline {
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+    border: none;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px); /* 悬停上浮 */
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--text-main);
+    color: var(--text-main);
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    background: var(--text-main);
+    color: white;
+}
+
+/* =========================================
+   5. 卡片布局 (Grid System for Exp & Projects)
+   ========================================= */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自适应列宽 */
+    gap: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #e5e7eb;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border-color: var(--primary-color);
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.card .date {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+/* 标签样式 (Tags) */
+.tags {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    font-size: 0.75rem;
+    background: #eff6ff;
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* =========================================
+   6. 技能交互区 (Skills & Evidence)
+   ========================================= */
+#skill-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.skill-btn {
+    background: white;
+    color: var(--text-main);
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.skill-btn:hover, .skill-btn:focus {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* 证据展示区 - 默认隐藏 */
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+#evidence-display {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color); /* 左侧蓝条强调 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    animation: fadeIn 0.5s ease forwards;
+}
+
+#evidence-display h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+#evidence-list li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+#evidence-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* 简单动画 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   7. 移动端适配 (Mobile Responsive)
+   ========================================= */
+@media (max-width: 768px) {
+    #hero h1 { font-size: 2.5rem; }
+    nav ul { gap: 1rem; font-size: 0.9rem; }
+    .container { padding: 3rem 1.5rem; }
+}
