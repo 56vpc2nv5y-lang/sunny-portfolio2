@@ -187,6 +187,9 @@
           
           <article class="card reveal project project-collapsible" id="gp-rag">
             <div class="project-head">
+              <div class="project-icon">
+                 <img src="https://placehold.co/200/e2e8f0/1e293b?text=RAG" alt="RAG System" />
+              </div>
               <div class="project-head-left">
                 <h3>RAG-based QA System</h3>
                 <p class="muted project-one-liner">Enhancing LLM accuracy with external knowledge.</p>
@@ -199,29 +202,14 @@
               <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-rag-body"><span class="plus">+</span></button>
             </div>
             <div class="project-body" id="gp-rag-body" hidden>
-              <div class="proj-block">
-                <div class="proj-label">Context</div>
-                <div class="proj-text">Address LLM hallucinations in specialized domains by retrieving relevant context before generation.</div>
+              <div class="proj-summary">
+                <p><strong>Context & Method:</strong> Addressed LLM hallucinations by building a retrieval pipeline. Utilized <strong>LangChain & ChromaDB</strong> for semantic search (Cosine Similarity) to fetch relevant context before generation.</p>
               </div>
-              <div class="proj-block">
-                <div class="proj-label">Role</div>
+              <div class="proj-insight-box">
+                <div class="proj-label">Key Insight & Impact</div>
                 <ul class="proj-list">
-                  <li>Built the retrieval pipeline using vector embeddings.</li>
-                  <li>Optimized prompt engineering for context integration.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Method</div>
-                <ul class="proj-list">
-                  <li>Tools: LangChain, ChromaDB, OpenAI API.</li>
-                  <li>Approach: Semantic search (Cosine Similarity) + Generative response.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Insight</div>
-                <ul class="proj-list">
-                  <li>Reduced factual errors by significant margin compared to base model.</li>
-                  <li>Demonstrated viable latency for real-time usage.</li>
+                  <li>Reduced factual errors by a <strong>significant margin</strong> compared to base model.</li>
+                  <li>Demonstrated viable latency (sub-200ms) for real-time usage.</li>
                 </ul>
               </div>
               <div class="proj-links">
@@ -232,6 +220,9 @@
 
           <article class="card reveal project project-collapsible" id="gp-recsys">
             <div class="project-head">
+              <div class="project-icon">
+                 <img src="https://placehold.co/200/e2e8f0/1e293b?text=RecSys" alt="RecSys" />
+              </div>
               <div class="project-head-left">
                 <h3>Personalized Recommender</h3>
                 <p class="muted project-one-liner">Hybrid filtering approach for retention.</p>
@@ -243,29 +234,14 @@
               <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-recsys-body"><span class="plus">+</span></button>
             </div>
             <div class="project-body" id="gp-recsys-body" hidden>
-              <div class="proj-block">
-                <div class="proj-label">Context</div>
-                <div class="proj-text">Improve item discovery and user engagement on platforms.</div>
+              <div class="proj-summary">
+                <p><strong>Context & Method:</strong> Improved item discovery by implementing a Hybrid Model (Collaborative + Content-based) to solve the "Cold Start" problem. Used <strong>Matrix Factorization (SVD)</strong> and Deep Learning embeddings.</p>
               </div>
-              <div class="proj-block">
-                <div class="proj-label">Role</div>
+              <div class="proj-insight-box">
+                <div class="proj-label">Key Insight & Impact</div>
                 <ul class="proj-list">
-                  <li>Implemented Collaborative Filtering and Content-based models.</li>
-                  <li>Addressed the "Cold Start" problem.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Method</div>
-                <ul class="proj-list">
-                  <li>Matrix Factorization (SVD) & Deep Learning embeddings.</li>
-                  <li>Evaluated using RMSE and Precision@K.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Insight</div>
-                <ul class="proj-list">
-                  <li>Hybrid model outperformed baseline by 15%.</li>
-                  <li>Effective handling of sparse user-item matrices.</li>
+                  <li>Hybrid model <strong>outperformed baseline by 15%</strong> (RMSE).</li>
+                  <li>Successfully handled sparse user-item matrices.</li>
                 </ul>
               </div>
               <div class="proj-links">
@@ -276,6 +252,9 @@
 
           <article class="card reveal project project-collapsible" id="gp-stat">
             <div class="project-head">
+              <div class="project-icon">
+                 <img src="https://placehold.co/200/e2e8f0/1e293b?text=Stat" alt="Statistics" />
+              </div>
               <div class="project-head-left">
                 <h3>Statistical Modelling</h3>
                 <p class="muted project-one-liner">Multivariate analysis for interpretation.</p>
@@ -287,29 +266,14 @@
               <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-stat-body"><span class="plus">+</span></button>
             </div>
             <div class="project-body" id="gp-stat-body" hidden>
-              <div class="proj-block">
-                <div class="proj-label">Context</div>
-                <div class="proj-text">Deriving causal relationships from noisy observational data.</div>
+              <div class="proj-summary">
+                <p><strong>Context & Method:</strong> Derived causal relationships from noisy data using <strong>GLM (Generalized Linear Models)</strong>. Conducted rigorous hypothesis testing and validated assumptions (normality, homoscedasticity).</p>
               </div>
-              <div class="proj-block">
-                <div class="proj-label">Role</div>
+              <div class="proj-insight-box">
+                <div class="proj-label">Key Insight & Impact</div>
                 <ul class="proj-list">
-                  <li>Conducted variable selection and model diagnostics.</li>
-                  <li>Validated assumptions (normality, homoscedasticity).</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Method</div>
-                <ul class="proj-list">
-                  <li>GLM (Generalized Linear Models) & Hypothesis testing.</li>
-                  <li>Rigorous validation of p-values and confidence intervals.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Insight</div>
-                <ul class="proj-list">
-                  <li>Identified significant predictors with 95% confidence.</li>
-                  <li>Provided interpretable coefficients for stakeholders.</li>
+                  <li>Identified significant predictors with <strong>95% confidence</strong>.</li>
+                  <li>Provided interpretable coefficients to support stakeholder decision-making.</li>
                 </ul>
               </div>
               <div class="proj-links">
@@ -320,6 +284,9 @@
 
           <article class="card reveal project project-collapsible" id="gp-mining">
             <div class="project-head">
+              <div class="project-icon">
+                 <img src="https://placehold.co/200/e2e8f0/1e293b?text=Mining" alt="Data Mining" />
+              </div>
               <div class="project-head-left">
                 <h3>High-Dim Data Mining</h3>
                 <p class="muted project-one-liner">Pattern discovery in large-scale datasets.</p>
@@ -331,29 +298,14 @@
               <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-mining-body"><span class="plus">+</span></button>
             </div>
             <div class="project-body" id="gp-mining-body" hidden>
-              <div class="proj-block">
-                <div class="proj-label">Context</div>
-                <div class="proj-text">Segmenting users or detecting anomalies in transaction logs.</div>
+              <div class="proj-summary">
+                <p><strong>Context & Method:</strong> Segmented users and detected anomalies by preprocessing high-dim data (PCA/t-SNE). Applied <strong>K-Means & DBSCAN</strong> algorithms optimized via Silhouette scores.</p>
               </div>
-              <div class="proj-block">
-                <div class="proj-label">Role</div>
+              <div class="proj-insight-box">
+                <div class="proj-label">Key Insight & Impact</div>
                 <ul class="proj-list">
-                  <li>Preprocessing high-dimensional data (PCA/t-SNE).</li>
-                  <li>Applied unsupervised learning algorithms.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Method</div>
-                <ul class="proj-list">
-                  <li>K-Means, DBSCAN, or Association Rule Mining.</li>
-                  <li>Silhouette score optimization.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Insight</div>
-                <ul class="proj-list">
-                  <li>Discovered distinct user personas for targeted marketing.</li>
-                  <li>Detected outliers representing potential irregularities.</li>
+                  <li>Discovered distinct user personas for targeted marketing strategies.</li>
+                  <li>Detected outliers representing potential irregularities in transaction logs.</li>
                 </ul>
               </div>
               <div class="proj-links">
@@ -433,8 +385,12 @@
         </div>
 
         <div class="grid3">
+          
           <article class="card reveal project project-collapsible" data-tags="nlp,viz" id="proj-gov-nlp">
             <div class="project-head">
+              <div class="project-icon">
+                 <img src="https://placehold.co/200/e2e8f0/1e293b?text=NLP" alt="NLP" />
+              </div>
               <div class="project-head-left">
                 <h3>Gov Social Media NLP <span class="tag" style="font-size:10px; color:#64748b; border-color:#e2e8f0;">CN Docs</span></h3>
                 <p class="muted project-one-liner">20,000 comments • Sentiment pipeline.</p>
@@ -446,26 +402,11 @@
               <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj1-body"><span class="plus">+</span></button>
             </div>
             <div class="project-body" id="proj1-body" hidden>
-              <div class="proj-block">
-                <div class="proj-label">Context</div>
-                <div class="proj-text">Analyze public sentiment on policies to guide content strategy.</div>
+              <div class="proj-summary">
+                <p><strong>Context & Method:</strong> Analyzed public sentiment on policies by building a collection pipeline for 20,000 comments. Used <strong>Dictionary-based NLP + LDA Topic Modelling</strong>.</p>
               </div>
-              <div class="proj-block">
-                <div class="proj-label">Role</div>
-                <ul class="proj-list">
-                  <li>Built the collection + cleaning pipeline.</li>
-                  <li>Designed categorization metrics.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Method</div>
-                <ul class="proj-list">
-                  <li>Source: Weibo/WeChat public comments.</li>
-                  <li>Technique: Dictionary-based NLP + LDA Topic Modelling.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Insight</div>
+              <div class="proj-insight-box">
+                <div class="proj-label">Key Insight & Impact</div>
                 <ul class="proj-list">
                   <li>Identified top discussion themes and engagement drivers.</li>
                   <li>Suggested content strategy adjustments based on data.</li>
@@ -480,6 +421,9 @@
 
           <article class="card reveal project project-collapsible" data-tags="model,viz" id="proj-health">
             <div class="project-head">
+              <div class="project-icon">
+                 <img src="https://placehold.co/200/e2e8f0/1e293b?text=Health" alt="Health" />
+              </div>
               <div class="project-head-left">
                 <h3>Health Engagement <span class="tag" style="font-size:10px; color:#64748b; border-color:#e2e8f0;">CN Docs</span></h3>
                 <p class="muted project-one-liner">Driver analysis & interpretable modelling.</p>
@@ -491,29 +435,14 @@
               <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj2-body"><span class="plus">+</span></button>
             </div>
             <div class="project-body" id="proj2-body" hidden>
-              <div class="proj-block">
-                <div class="proj-label">Context</div>
-                <div class="proj-text">Identify what drives users to engage with online health services.</div>
+              <div class="proj-summary">
+                <p><strong>Context & Method:</strong> Identified drivers of user engagement with online health services using survey data. Applied <strong>Lasso Regression (Selection) & Random Forest</strong>.</p>
               </div>
-              <div class="proj-block">
-                <div class="proj-label">Role</div>
+              <div class="proj-insight-box">
+                <div class="proj-label">Key Insight & Impact</div>
                 <ul class="proj-list">
-                  <li>Designed measurement framework.</li>
-                  <li>Ran modelling experiments.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Method</div>
-                <ul class="proj-list">
-                  <li>Source: Survey data.</li>
-                  <li>Technique: Lasso Regression (Selection) & Random Forest.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Insight</div>
-                <ul class="proj-list">
-                  <li>Trust and UI Ease-of-use were top predictors.</li>
-                  <li>Converted drivers into actionable levers.</li>
+                  <li>Found that Trust and UI Ease-of-use were top predictors.</li>
+                  <li>Converted drivers into actionable levers for product improvement.</li>
                 </ul>
               </div>
               <div class="proj-links">
@@ -524,6 +453,9 @@
 
           <article class="card reveal project project-collapsible" data-tags="model,sql" id="proj-happiness">
             <div class="project-head">
+              <div class="project-icon">
+                 <img src="https://placehold.co/200/e2e8f0/1e293b?text=Index" alt="Happiness Index" />
+              </div>
               <div class="project-head-left">
                 <h3>Happiness Index <span class="tag" style="font-size:10px; color:#64748b; border-color:#e2e8f0;">CN Docs</span></h3>
                 <p class="muted project-one-liner">Index construction • Multi-year comparison.</p>
@@ -535,29 +467,14 @@
               <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj3-body"><span class="plus">+</span></button>
             </div>
             <div class="project-body" id="proj3-body" hidden>
-              <div class="proj-block">
-                <div class="proj-label">Context</div>
-                <div class="proj-text">Evaluating regional happiness levels to support policy suggestions.</div>
+              <div class="proj-summary">
+                <p><strong>Context & Method:</strong> Constructed a regional happiness index using multi-year public datasets. Used <strong>SQL</strong> for cleaning and <strong>PCA</strong> for weight assignment.</p>
               </div>
-              <div class="proj-block">
-                <div class="proj-label">Role</div>
+              <div class="proj-insight-box">
+                <div class="proj-label">Key Insight & Impact</div>
                 <ul class="proj-list">
-                  <li>Defined index structure and weights.</li>
-                  <li>Cleaned multi-year data using SQL.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Method</div>
-                <ul class="proj-list">
-                  <li>Source: Public statistical datasets.</li>
-                  <li>Technique: PCA for weight assignment + Sensitivity checks.</li>
-                </ul>
-              </div>
-              <div class="proj-block">
-                <div class="proj-label">Insight</div>
-                <ul class="proj-list">
-                  <li>Produced regional ranking and factor attribution.</li>
-                  <li>Identified key areas for improvement in specific provinces.</li>
+                  <li>Produced regional rankings and factor attribution analysis.</li>
+                  <li>Identified key areas for policy improvement in specific provinces.</li>
                 </ul>
               </div>
               <div class="proj-links">
