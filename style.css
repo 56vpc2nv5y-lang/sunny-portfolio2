@@ -152,6 +152,58 @@ h2 {
     box-shadow: 25px 25px 80px rgba(37, 99, 235, 0.15); /* 阴影变蓝 */
 }
 
+/* --- 🔴开始复制：这里是缺失的按钮样式 --- */
+
+.cta-buttons {
+    display: flex;          /* 弹性布局 */
+    gap: 1rem;             /* 两个按钮之间的距离 */
+    align-items: center;    /* 垂直居中对齐 */
+    margin-top: 2rem;       /* 距离上方文字的空隙 */
+}
+
+/* 定义通用按钮形状 */
+.btn-primary, .btn-outline {
+    display: inline-block;     /* 让链接拥有类似盒子的属性 */
+    padding: 0.8rem 1.8rem;    /* 内边距 */
+    border-radius: 50px;       /* 圆润的胶囊形状 */
+    font-weight: 600;          /* 字体加粗 */
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease; /* 动画过渡 */
+    text-decoration: none;     /* 去掉下划线 */
+    line-height: 1.2;          
+}
+
+/* 1. 实心蓝按钮 */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color); 
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); 
+}
+
+/* 2. 空心描边按钮 */
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 2px solid #e5e7eb; 
+}
+
+.btn-outline:hover {
+    border-color: var(--text-main); 
+    background-color: var(--text-main);
+    color: white; 
+    transform: translateY(-2px);
+}
+
+/* --- 🔴复制结束 --- */
 /* =========================================
    移动端适配 (Mobile: 图在上，文在下)
    ========================================= */
