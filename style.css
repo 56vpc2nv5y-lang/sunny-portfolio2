@@ -81,72 +81,113 @@ h2 {
 }
 
 /* =========================================
-   4. Hero Section (首屏视觉)
+   4. Hero Section (New Split Layout)
    ========================================= */
 #hero {
-    min-height: 90vh; /* 占满90%屏幕高度 */
+    min-height: 85vh; /* 高度稍微调小一点，适应一屏 */
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center; /* 垂直居中 */
+}
+
+.hero-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* 左边文字占宽一点，右边图片窄一点 */
+    gap: 4rem; /* 左右间距 */
     align-items: center;
-    text-align: center;
+}
+
+/* 左侧文字样式调整 */
+.hero-text {
+    text-align: left; /* 文字改为左对齐 */
+}
+
+/* 那个橘色的小状态条 */
+.status-badge {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #e65100; /* 活力橙色 */
+    background: #fff3e0;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 #hero h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
+    font-size: 4rem; /* 字体加大，更有冲击力 */
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
     background: linear-gradient(135deg, var(--text-main) 0%, var(--primary-color) 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* 文字渐变色效果 */
+    -webkit-text-fill-color: transparent;
 }
 
 #hero p {
     font-size: 1.25rem;
     color: var(--text-muted);
-    max-width: 600px;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    max-width: 90%; /* 防止文字太长 */
 }
 
-/* 按钮样式 */
-.cta-buttons {
+/* 右侧图片样式 */
+.hero-image {
+    position: relative;
     display: flex;
-    gap: 1rem;
+    justify-content: center;
 }
 
-button, .btn-outline {
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 1rem;
+.hero-image img {
+    width: 100%;
+    max-width: 450px; /* 限制最大宽度，防止照片太大吓人 */
+    height: auto;
+    border-radius: 24px; /* 大圆角，类似 iPhone 图标 */
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.1); /* 柔和的高级阴影 */
     transition: var(--transition);
-    border: none;
 }
 
-button {
-    background-color: var(--primary-color);
-    color: white;
+.hero-image img:hover {
+    transform: scale(1.02); /* 鼠标放上去轻微放大 */
+    box-shadow: 25px 25px 80px rgba(37, 99, 235, 0.15); /* 阴影变蓝 */
 }
 
-button:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-2px); /* 悬停上浮 */
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-}
+/* =========================================
+   移动端适配 (Mobile: 图在上，文在下)
+   ========================================= */
+@media (max-width: 768px) {
+    #hero {
+        min-height: auto;
+        padding-top: 6rem; /* 给导航栏留位置 */
+    }
 
-.btn-outline {
-    background: transparent;
-    border: 2px solid var(--text-main);
-    color: var(--text-main);
-    display: inline-block;
-}
+    .hero-wrapper {
+        grid-template-columns: 1fr; /* 变成单列 */
+        gap: 3rem;
+        text-align: center; /* 手机上文字居中更好看 */
+    }
 
-.btn-outline:hover {
-    background: var(--text-main);
-    color: white;
-}
+    /* 手机上把图片调到文字上面去 (Order) */
+    .hero-image {
+        order: -1; 
+    }
 
+    .hero-text {
+        text-align: center;
+    }
+    
+    .cta-buttons {
+        justify-content: center; /* 按钮居中 */
+    }
+
+    #hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-image img {
+        max-width: 80%; /* 手机上照片稍微小一点 */
+    }
+}
 /* =========================================
    5. 卡片布局 (Grid System for Exp & Projects)
    ========================================= */
