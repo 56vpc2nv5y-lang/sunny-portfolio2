@@ -37,7 +37,7 @@
 
           <div class="hero-actions">
             <a class="btn primary" href="#grad-projects">View Latest Work</a>
-            <a class="btn" href="./resume.pdf" download="Sunny_Zhang_CV.pdf" data-cv>Download CV</a>
+            <a class="btn" href="resume.pdf" download>Download CV</a>
           </div>
 
           <div class="proof-row">
@@ -51,14 +51,12 @@
         <div class="hero-right reveal">
           <div class="hero-card">
             <div class="hero-img" role="img" aria-label="Profile image">
-              <img src="./image.png" alt="Sunny Zhang" loading="lazy"
-                   onerror="this.style.display='none'; this.parentElement.classList.add('noimg');" />
+              <img src="image.png" alt="Sunny Zhang" onerror="this.style.display='none'; this.parentElement.classList.add('noimg');" />
               <div class="hero-img-fallback">
                 <div class="fallback-title">Portfolio</div>
                 <div class="fallback-sub">Scroll to explore evidence</div>
               </div>
             </div>
-
             <div class="hero-meta">
               <div class="meta-item">
                 <div class="meta-k">Location</div>
@@ -114,12 +112,12 @@
       </div>
     </section>
 
-    <!-- ===== Education (more quantified) ===== -->
+    <!-- ✅ EDUCATION (quantified) -->
     <section id="education" class="section alt">
       <div class="container">
         <div class="section-head reveal center">
           <h2>Education</h2>
-          <p class="muted">Quantified academic performance and outcomes.</p>
+          <p class="muted">Quantified academic performance.</p>
         </div>
 
         <div class="timeline">
@@ -132,23 +130,21 @@
             <div class="edu-rows">
               <div class="edu-left">
                 <p><strong>MSc in Analytics</strong></p>
+
                 <div class="edu-kpis">
                   <span class="kpi">CGPA: 4.60 / 5.00</span>
-                  <span class="kpi">A+/A in core modules</span>
-                </div>
-                <div class="edu-kpis">
+                  <span class="kpi">A+/A (Core Modules)</span>
                   <span class="kpi">Projects: 4+</span>
-                  <span class="kpi">Tech: Python • SQL • Viz</span>
                 </div>
               </div>
 
               <div class="edu-right">
                 <div class="edu-kpis">
                   <span class="kpi">Focus: Data → Model → Viz</span>
-                  <span class="kpi">Delivery: Reports / Slides</span>
+                  <span class="kpi">Tooling: Python • SQL</span>
                 </div>
                 <p class="muted" style="margin-top:10px">
-                  Representative work: Recommendation Systems • RAG Pipelines • Data Mining
+                  Key work: Recommendation Systems • RAG Pipelines • Data Mining
                 </p>
               </div>
             </div>
@@ -163,23 +159,22 @@
             <div class="edu-rows">
               <div class="edu-left">
                 <p><strong>BSc in Statistics</strong></p>
+
                 <div class="edu-kpis">
                   <span class="kpi">CGPA: 3.90 / 4.00</span>
                   <span class="kpi">Top 4%</span>
-                </div>
-                <div class="edu-kpis">
                   <span class="kpi">Competitions: 3+</span>
-                  <span class="kpi">Role: Team Lead</span>
                 </div>
               </div>
 
               <div class="edu-right">
                 <div class="edu-kpis">
+                  <span class="kpi">Role: Team Lead</span>
                   <span class="kpi">Core: Econometrics</span>
-                  <span class="kpi">Core: Regression & Inference</span>
+                  <span class="kpi">Skills: Regression • Inference</span>
                 </div>
                 <p class="muted" style="margin-top:10px">
-                  Emphasis on interpretable modelling and data-driven decision support.
+                  Built strong fundamentals in modelling, validation, and interpretation.
                 </p>
               </div>
             </div>
@@ -188,7 +183,7 @@
       </div>
     </section>
 
-    <!-- ===== Graduate Projects ===== -->
+    <!-- ✅ GRAD PROJECTS (Background + downloadable links) -->
     <section id="grad-projects" class="section">
       <div class="container">
         <div class="section-head reveal center">
@@ -217,9 +212,8 @@
             <div class="project-body" id="gp-rag-body" hidden>
               <div class="proj-block">
                 <div class="proj-label">Background</div>
-                <div class="proj-text">Reduce hallucinations in specialized domains by retrieving relevant context before generation.</div>
+                <div class="proj-text">Address LLM hallucinations in specialized domains by retrieving relevant context before generation.</div>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Role</div>
                 <ul class="proj-list">
@@ -227,27 +221,26 @@
                   <li>Optimized prompt engineering for context integration.</li>
                 </ul>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Method</div>
                 <ul class="proj-list">
                   <li>Tools: LangChain, ChromaDB, OpenAI API.</li>
-                  <li>Approach: Semantic search (Cosine Similarity) + grounded response generation.</li>
+                  <li>Approach: Semantic search (Cosine Similarity) + Generative response.</li>
                 </ul>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Insight</div>
                 <ul class="proj-list">
-                  <li>Reduced factual errors vs. base model on domain QA checks.</li>
-                  <li>Maintained practical latency for interactive usage.</li>
+                  <li>Reduced factual errors by significant margin compared to base model.</li>
+                  <li>Demonstrated viable latency for real-time usage.</li>
                 </ul>
               </div>
 
               <div class="proj-links">
-                <a class="btn" href="./assets/gp-rag-report.pdf" download>Download Report</a>
-                <a class="btn" href="./assets/gp-rag-slides.pdf" download>Download PPT</a>
                 <a class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+                <!-- ✅ add downloadable report/ppt -->
+                <a class="btn" href="assets/reports/rag_report.pdf" download>Report (PDF)</a>
+                <a class="btn" href="assets/slides/rag_slides.pdf" download>PPT/Slides</a>
               </div>
             </div>
           </article>
@@ -270,37 +263,34 @@
             <div class="project-body" id="gp-recsys-body" hidden>
               <div class="proj-block">
                 <div class="proj-label">Background</div>
-                <div class="proj-text">Improve item discovery and user engagement on content platforms.</div>
+                <div class="proj-text">Improve item discovery and user engagement on platforms.</div>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Role</div>
                 <ul class="proj-list">
                   <li>Implemented Collaborative Filtering and Content-based models.</li>
-                  <li>Designed strategies for cold-start users/items.</li>
+                  <li>Addressed the "Cold Start" problem.</li>
                 </ul>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Method</div>
                 <ul class="proj-list">
-                  <li>Matrix Factorization (SVD) + embedding-based features.</li>
-                  <li>Evaluation: RMSE and Precision@K.</li>
+                  <li>Matrix Factorization (SVD) & Deep Learning embeddings.</li>
+                  <li>Evaluated using RMSE and Precision@K.</li>
                 </ul>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Insight</div>
                 <ul class="proj-list">
-                  <li>Hybrid model improved baseline performance by ~15% (course benchmark).</li>
-                  <li>Handled sparsity effectively with hybrid signals.</li>
+                  <li>Hybrid model outperformed baseline by 15%.</li>
+                  <li>Effective handling of sparse user-item matrices.</li>
                 </ul>
               </div>
 
               <div class="proj-links">
-                <a class="btn" href="./assets/gp-recsys-report.pdf" download>Download Report</a>
-                <a class="btn" href="./assets/gp-recsys-slides.pdf" download>Download PPT</a>
                 <a class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn" href="assets/reports/recsys_report.pdf" download>Report (PDF)</a>
+                <a class="btn" href="assets/slides/recsys_slides.pdf" download>PPT/Slides</a>
               </div>
             </div>
           </article>
@@ -323,9 +313,8 @@
             <div class="project-body" id="gp-stat-body" hidden>
               <div class="proj-block">
                 <div class="proj-label">Background</div>
-                <div class="proj-text">Derive interpretable relationships from noisy observational data with proper diagnostics.</div>
+                <div class="proj-text">Deriving causal relationships from noisy observational data.</div>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Role</div>
                 <ul class="proj-list">
@@ -333,26 +322,24 @@
                   <li>Validated assumptions (normality, homoscedasticity).</li>
                 </ul>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Method</div>
                 <ul class="proj-list">
-                  <li>GLM + hypothesis testing and confidence intervals.</li>
-                  <li>Robust checks and residual analysis.</li>
+                  <li>GLM (Generalized Linear Models) & Hypothesis testing.</li>
+                  <li>Rigorous validation of p-values and confidence intervals.</li>
                 </ul>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Insight</div>
                 <ul class="proj-list">
-                  <li>Identified significant predictors with clear interpretation.</li>
-                  <li>Translated coefficients into stakeholder-ready narrative.</li>
+                  <li>Identified significant predictors with 95% confidence.</li>
+                  <li>Provided interpretable coefficients for stakeholders.</li>
                 </ul>
               </div>
 
               <div class="proj-links">
-                <a class="btn" href="./assets/gp-stat-report.pdf" download>Download Report</a>
-                <a class="btn" href="./assets/gp-stat-slides.pdf" download>Download PPT</a>
+                <a class="btn" href="assets/reports/stat_model_report.pdf" download>Report (PDF)</a>
+                <a class="btn" href="assets/slides/stat_model_slides.pdf" download>PPT/Slides</a>
               </div>
             </div>
           </article>
@@ -375,37 +362,34 @@
             <div class="project-body" id="gp-mining-body" hidden>
               <div class="proj-block">
                 <div class="proj-label">Background</div>
-                <div class="proj-text">Segment users / detect anomalies in high-dimensional logs for targeted actions.</div>
+                <div class="proj-text">Segmenting users or detecting anomalies in transaction logs.</div>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Role</div>
                 <ul class="proj-list">
-                  <li>Preprocessed high-dimensional data (PCA/t-SNE).</li>
-                  <li>Applied unsupervised learning and validated clusters.</li>
+                  <li>Preprocessing high-dimensional data (PCA/t-SNE).</li>
+                  <li>Applied unsupervised learning algorithms.</li>
                 </ul>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Method</div>
                 <ul class="proj-list">
-                  <li>K-Means / DBSCAN; silhouette score tuning.</li>
-                  <li>Feature scaling and stability checks.</li>
+                  <li>K-Means, DBSCAN, or Association Rule Mining.</li>
+                  <li>Silhouette score optimization.</li>
                 </ul>
               </div>
-
               <div class="proj-block">
                 <div class="proj-label">Insight</div>
                 <ul class="proj-list">
-                  <li>Discovered distinct user personas for marketing segmentation.</li>
-                  <li>Flagged outliers representing potential irregularities.</li>
+                  <li>Discovered distinct user personas for targeted marketing.</li>
+                  <li>Detected outliers representing potential irregularities.</li>
                 </ul>
               </div>
 
               <div class="proj-links">
-                <a class="btn" href="./assets/gp-mining-report.pdf" download>Download Report</a>
-                <a class="btn" href="./assets/gp-mining-slides.pdf" download>Download PPT</a>
                 <a class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn" href="assets/reports/mining_report.pdf" download>Report (PDF)</a>
+                <a class="btn" href="assets/slides/mining_slides.pdf" download>PPT/Slides</a>
               </div>
             </div>
           </article>
@@ -414,7 +398,7 @@
       </div>
     </section>
 
-    <!-- Experience (unchanged) -->
+    <!-- everything below unchanged -->
     <section id="experience" class="section alt">
       <div class="container">
         <div class="section-head reveal center">
@@ -467,7 +451,6 @@
       </div>
     </section>
 
-    <!-- Undergraduate projects (only change: Context->Background labels inside bodies) -->
     <section id="projects" class="section">
       <div class="container">
         <div class="section-head reveal center">
@@ -495,7 +478,6 @@
               </div>
               <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj1-body"><span class="plus">+</span></button>
             </div>
-
             <div class="project-body" id="proj1-body" hidden>
               <div class="proj-block">
                 <div class="proj-label">Background</div>
@@ -541,7 +523,6 @@
               </div>
               <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj2-body"><span class="plus">+</span></button>
             </div>
-
             <div class="project-body" id="proj2-body" hidden>
               <div class="proj-block">
                 <div class="proj-label">Background</div>
@@ -586,7 +567,6 @@
               </div>
               <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj3-body"><span class="plus">+</span></button>
             </div>
-
             <div class="project-body" id="proj3-body" hidden>
               <div class="proj-block">
                 <div class="proj-label">Background</div>
@@ -603,14 +583,14 @@
                 <div class="proj-label">Method</div>
                 <ul class="proj-list">
                   <li>Source: Public statistical datasets.</li>
-                  <li>Technique: PCA for weight assignment + sensitivity checks.</li>
+                  <li>Technique: PCA for weight assignment + Sensitivity checks.</li>
                 </ul>
               </div>
               <div class="proj-block">
                 <div class="proj-label">Insight</div>
                 <ul class="proj-list">
                   <li>Produced regional ranking and factor attribution.</li>
-                  <li>Identified improvement levers for specific provinces.</li>
+                  <li>Identified key areas for improvement in specific provinces.</li>
                 </ul>
               </div>
               <div class="proj-links">
@@ -626,7 +606,6 @@
       </div>
     </section>
 
-    <!-- Skills (unchanged) -->
     <section id="skills" class="section alt">
       <div class="container">
         <div class="section-head reveal center">
@@ -643,4 +622,40 @@
         </div>
 
         <div class="evidence-card reveal" aria-live="polite">
-          <div class="evidence-title" id="evidence-title">Usa
+          <div class="evidence-title" id="evidence-title">Usage Evidence for SQL:</div>
+          <div class="evidence-list" id="evidence-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head reveal center">
+          <h2>Contact</h2>
+          <p class="muted">Let’s connect.</p>
+        </div>
+
+        <div class="cards two">
+          <div class="card reveal">
+            <h3>Email</h3>
+            <p><a class="textlink" href="mailto:JINGYI021@e.ntu.edu.sg">JINGYI021@e.ntu.edu.sg</a></p>
+            <p class="muted">Singapore • Open to Data Analyst opportunities</p>
+          </div>
+
+          <div class="card reveal">
+            <h3>Links</h3>
+            <p><a class="textlink" href="https://www.linkedin.com/in/jingyi-zhang-46289a378/" target="_blank" rel="noopener">LinkedIn</a></p>
+            <p><a class="textlink" href="#" aria-disabled="true">GitHub (add)</a></p>
+          </div>
+        </div>
+
+        <footer class="footer reveal">
+          <span class="muted">© <span id="year"></span> Sunny Zhang • Built for GitHub Pages</span>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
