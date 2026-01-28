@@ -1,175 +1,121 @@
-// ===============================
-// Scroll Reveal
-// ===============================
+// ===== Scroll Reveal =====
 const revealEls = document.querySelectorAll(".reveal");
+const io = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (e.isIntersecting) e.target.classList.add("visible");
+  }
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
 
-const io = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add("visible");
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
+// 简单的数字滚动函数
+const runCounter = (el) => {
+  const target = parseFloat(el.getAttribute('data-target'));
+  const duration = 1500; // 动画持续 1.5秒
+  const step = target / (duration / 16); // 60fps
+  let current = 0;
 
-revealEls.forEach((el) => io.observe(el));
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) {
+      el.textContent = target.toFixed(2); // 保留两位小数
+      clearInterval(timer);
+    } else {
+      el.textContent = current.toFixed(2);
+    }
+  }, 16);
+};
 
+// 结合 IntersectionObserver (当元素进入屏幕时触发)
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const counters = entry.target.querySelectorAll('.counter');
+      counters.forEach(c => runCounter(c));
+      counterObserver.unobserve(entry.target); // 只运行一次
+    }
+  });
+}, { threshold: 0.5 });
 
-// ===============================
-// Footer Year
-// ===============================
-const yearEl = document.getElementById("year");
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
+document.querySelectorAll('.timeline-item').forEach(item => {
+  counterObserver.observe(item);
+});
+// ===== Year =====
+document.getElementById("year").textContent = new Date().getFullYear();
 
-
-// ===============================
-// Undergraduate Project Filters
-// 仅作用于 #projects（Undergraduate）
-// ===============================
+// ===== Project filters =====
 const chips = document.querySelectorAll(".chip");
-const undergradProjects = document.querySelectorAll("#projects .project");
+// FIX: Only target projects inside the "Undergraduate/Experience" section for filtering
+// This prevents Grad Projects (which are separate) from disappearing when you click filters.
+const projects = document.querySelectorAll("#projects .project");
 
-chips.forEach((chip) => {
+chips.forEach(chip => {
   chip.addEventListener("click", () => {
-    chips.forEach((c) => c.classList.remove("active"));
+    chips.forEach(c => c.classList.remove("active"));
     chip.classList.add("active");
+    const f = chip.dataset.filter;
 
-    const filter = chip.dataset.filter;
-
-    undergradProjects.forEach((proj) => {
-      const tags = (proj.dataset.tags || "")
-        .split(",")
-        .map((t) => t.trim());
-
-      const show =
-        filter === "all" || tags.includes(filter);
-
-      proj.style.display = show ? "" : "none";
+    projects.forEach(p => {
+      const tags = (p.dataset.tags || "").split(",").map(s => s.trim());
+      const show = (f === "all") || tags.includes(f);
+      p.style.display = show ? "" : "none";
     });
   });
 });
 
-
-// ===============================
-// Collapsible Projects (Accordion-style cards)
-// 适用于 Graduate + Undergraduate
-// ===============================
+// ===== Collapsible projects (accordion-like) =====
 const toggles = document.querySelectorAll(".proj-toggle");
 
-toggles.forEach((btn) => {
+toggles.forEach(btn => {
   btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    const expanded =
-      btn.getAttribute("aria-expanded") === "true";
-
+    e.stopPropagation(); // Safe practice to prevent bubbling
+    const expanded = btn.getAttribute("aria-expanded") === "true";
     const bodyId = btn.getAttribute("aria-controls");
     const body = document.getElementById(bodyId);
-
     if (!body) return;
 
-    // Toggle state
+    // Toggle current
     btn.setAttribute("aria-expanded", String(!expanded));
-    const icon = btn.querySelector(".plus");
-    if (icon) {
-      icon.textContent = expanded ? "+" : "−";
-    }
-
+    btn.querySelector(".plus").textContent = expanded ? "+" : "−";
     body.hidden = expanded;
   });
 });
 
-
-// ===============================
-// Skills → Evidence Tabs
-// ===============================
+// ===== Skills evidence (tabs style) =====
 const evidenceData = {
   sql: {
     title: "Usage Evidence for SQL:",
     items: [
-      {
-        label: "DataStory Internship — Monthly KPI reporting & validation",
-        href: "#exp-datastory",
-        meta: "SQL extraction, cleaning, and metric checks for management reports"
-      },
-      {
-        label: "DataStory Internship — Dashboard metric pipeline",
-        href: "#exp-datastory",
-        meta: "KPI monitoring supporting performance tracking"
-      },
-      {
-        label: "Happiness Index Project",
-        href: "#proj-happiness",
-        meta: "Joined multi-year public datasets for index construction"
-      }
+      { label: "DataStory Internship — Monthly KPI reporting & validation", href: "#exp-datastory", meta: "SQL extraction, cleaning, and metric checks for management reports" },
+      { label: "DataStory Internship — Dashboard metric pipeline", href: "#exp-datastory", meta: "KPI monitoring supporting performance tracking" },
+      { label: "Happiness Index Project", href: "#proj-happiness", meta: "Joined multi-year public datasets for index construction" }
     ]
   },
-
   tableau: {
     title: "Usage Evidence for Tableau:",
     items: [
-      {
-        label: "DataStory Internship — 10+ dashboards for leadership review",
-        href: "#exp-datastory",
-        meta: "BI dashboards for performance tracking and reporting"
-      }
+      { label: "DataStory Internship — 10+ dashboards for leadership review", href: "#exp-datastory", meta: "BI dashboards for performance tracking and reporting" }
     ]
   },
-
   python_nlp: {
     title: "Usage Evidence for Python (NLP):",
     items: [
-      {
-        label: "Government Social Media Comment Analysis (NLP)",
-        href: "#proj-gov-nlp",
-        meta: "Pipeline on 20,000 comments: preprocessing → categorization → metrics"
-      },
-      {
-        label: "RAG-based QA System",
-        href: "#gp-rag",
-        meta: "Vector embeddings and semantic search pipeline"
-      }
+      { label: "Government Social Media Comment Analysis (NLP)", href: "#proj-gov-nlp", meta: "Pipeline on 20,000 comments: preprocessing → categorization → metrics" },
+      { label: "RAG-based QA System", href: "#grad-projects", meta: "Vector embeddings and semantic search pipeline" }
     ]
   },
-
   modelling: {
     title: "Usage Evidence for Statistical Modelling:",
     items: [
-      {
-        label: "Health Engagement via the Internet",
-        href: "#proj-health",
-        meta: "Driver analysis through modelling with interpretable recommendations"
-      },
-      {
-        label: "Teaching Assistant (Econometrics)",
-        href: "#exp-ta",
-        meta: "Econometrics + modelling concepts taught and applied in practice"
-      },
-      {
-        label: "Graduate Project: Statistical Modelling",
-        href: "#gp-stat",
-        meta: "GLM and multivariate analysis on complex datasets"
-      }
+      { label: "Health Engagement via the Internet", href: "#proj-health", meta: "Driver analysis through modelling with interpretable recommendations" },
+      { label: "Teaching Assistant (Econometrics)", href: "#exp-ta", meta: "Econometrics + modelling concepts taught and applied in practice" },
+      { label: "Graduate Project: Advanced Statistical Modelling", href: "#grad-projects", meta: "GLM and multivariate analysis on complex datasets" }
     ]
   },
-
   market_research: {
     title: "Usage Evidence for Market Research:",
     items: [
-      {
-        label: "Haitong Securities — market reports",
-        href: "#exp-securities",
-        meta: "Market trend analysis based on price/volume and industry data"
-      },
-      {
-        label: "DataStory Internship — social listening insights",
-        href: "#exp-datastory",
-        meta: "Consumer sentiment & engagement analysis supporting strategy"
-      }
+      { label: "Haitong Securities — daily/weekly market reports", href: "#exp-securities", meta: "Market trend analysis based on price/volume and industry data" },
+      { label: "DataStory Internship — social listening insights", href: "#exp-datastory", meta: "Consumer sentiment & engagement analysis supporting strategy" }
     ]
   }
 };
@@ -178,48 +124,40 @@ const tabs = document.querySelectorAll(".skill-tab");
 const evidenceTitle = document.getElementById("evidence-title");
 const evidenceList = document.getElementById("evidence-list");
 
-function renderEvidence(key) {
+function renderEvidence(key){
   const data = evidenceData[key];
   if (!data) return;
 
   evidenceTitle.textContent = data.title;
   evidenceList.innerHTML = "";
 
-  data.items.forEach((item) => {
+  data.items.forEach(it => {
     const row = document.createElement("div");
     row.className = "evidence-item";
     row.innerHTML = `
       <div class="evidence-bullet">→</div>
       <div>
-        <div><a href="${item.href}">${item.label}</a></div>
-        <div class="evidence-meta">${item.meta}</div>
+        <div><a href="${it.href}">${it.label}</a></div>
+        <div class="evidence-meta">${it.meta}</div>
       </div>
     `;
     evidenceList.appendChild(row);
   });
 }
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    tabs.forEach((t) => {
-      t.classList.remove("active");
-      t.setAttribute("aria-selected", "false");
+// tab click
+tabs.forEach(t => {
+  t.addEventListener("click", () => {
+    tabs.forEach(x => {
+      x.classList.remove("active");
+      x.setAttribute("aria-selected", "false");
     });
-
-    tab.classList.add("active");
-    tab.setAttribute("aria-selected", "true");
-    renderEvidence(tab.dataset.skill);
+    t.classList.add("active");
+    t.setAttribute("aria-selected", "true");
+    renderEvidence(t.dataset.skill);
   });
 });
 
-
-// ===============================
-// Default selected skill tab
-// ===============================
-const defaultTab =
-  document.querySelector('.skill-tab[data-skill="sql"]') ||
-  tabs[0];
-
-if (defaultTab) {
-  defaultTab.click();
-}
+// default select
+const defaultTab = document.querySelector('.skill-tab[data-skill="python_nlp"]') || document.querySelector('.skill-tab[data-skill="sql"]');
+if (defaultTab) defaultTab.click();
