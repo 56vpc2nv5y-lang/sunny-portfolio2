@@ -1,4 +1,4 @@
-// ===== Scroll Reveal =====
+// ===== 1. 页面滚动显示动画 (Scroll Reveal) =====
 const revealEls = document.querySelectorAll(".reveal");
 const io = new IntersectionObserver((entries) => {
   for (const e of entries) {
@@ -7,81 +7,28 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 revealEls.forEach(el => io.observe(el));
 
-// 简单的数字滚动函数
-const runCounter = (el) => {
-  const target = parseFloat(el.getAttribute('data-target'));
-  const duration = 1500; // 动画持续 1.5秒
-  const step = target / (duration / 16); // 60fps
-  let current = 0;
+// ===== 2. 自动更新页脚年份 =====
+const yearEl = document.getElementById("year");
+if(yearEl) yearEl.textContent = new Date().getFullYear();
 
-  const timer = setInterval(() => {
-    current += step;
-    if (current >= target) {
-      el.textContent = target.toFixed(2); // 保留两位小数
-      clearInterval(timer);
-    } else {
-      el.textContent = current.toFixed(2);
-    }
-  }, 16);
-};
-
-// 结合 IntersectionObserver (当元素进入屏幕时触发)
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const counters = entry.target.querySelectorAll('.counter');
-      counters.forEach(c => runCounter(c));
-      counterObserver.unobserve(entry.target); // 只运行一次
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.timeline-item').forEach(item => {
-  counterObserver.observe(item);
-});
-// ===== Year =====
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// ===== Project filters =====
-const chips = document.querySelectorAll(".chip");
-// FIX: Only target projects inside the "Undergraduate/Experience" section for filtering
-// This prevents Grad Projects (which are separate) from disappearing when you click filters.
-const projects = document.querySelectorAll("#projects .project");
-
-chips.forEach(chip => {
-  chip.addEventListener("click", () => {
-    chips.forEach(c => c.classList.remove("active"));
-    chip.classList.add("active");
-    const f = chip.dataset.filter;
-
-    projects.forEach(p => {
-      const tags = (p.dataset.tags || "").split(",").map(s => s.trim());
-      const show = (f === "all") || tags.includes(f);
-      p.style.display = show ? "" : "none";
-    });
-  });
-});
-
-// ===== Collapsible projects (accordion-like) =====
+// ===== 3. 项目折叠卡片逻辑 (Accordion) =====
 const toggles = document.querySelectorAll(".proj-toggle");
-
 toggles.forEach(btn => {
   btn.addEventListener("click", (e) => {
-    e.stopPropagation(); // Safe practice to prevent bubbling
+    e.stopPropagation(); 
     const expanded = btn.getAttribute("aria-expanded") === "true";
     const bodyId = btn.getAttribute("aria-controls");
     const body = document.getElementById(bodyId);
     if (!body) return;
 
-    // Toggle current
     btn.setAttribute("aria-expanded", String(!expanded));
     btn.querySelector(".plus").textContent = expanded ? "+" : "−";
     body.hidden = expanded;
   });
 });
 
-// ===== Skills evidence (tabs style) =====
-// 修正重点：补全了 r_stat 和 office 的数据，并确保 key 与 HTML 的 data-skill 一致
+// ===== 4. 技能证据库 (Skills Evidence) =====
+// 注意：这里的 key (如 r_stat) 必须和 HTML 里的 data-skill="r_stat" 完全一致
 const evidenceData = {
   sql: {
     title: "Usage Evidence for SQL:",
@@ -112,20 +59,20 @@ const evidenceData = {
       { label: "Graduate Project: Advanced Statistical Modelling", href: "#gp-stat", meta: "GLM and multivariate analysis on complex datasets" }
     ]
   },
-  // 补全 R Language 数据
+  // 修正：添加 R Language 的对应数据
   r_stat: {
     title: "Usage Evidence for R Language:",
     items: [
-      { label: "Statistical Modelling Coursework", href: "#gp-stat", meta: "Applied GLM, hypothesis testing, and causal inference using R" },
-      { label: "Econometrics TA Support", href: "#exp-ta", meta: "Assisted in troubleshooting R scripts for regression analysis" }
+      { label: "Statistical Modelling (MSc Course)", href: "#gp-stat", meta: "Derived causal relationships using GLM and rigorous hypothesis testing in R" },
+      { label: "Econometrics TA Support", href: "#exp-ta", meta: "Led workshops applying regression and diagnostic tests using R scripts" }
     ]
   },
-  // 补全 Microsoft Suite 数据
+  // 修正：添加 Microsoft Suite 的对应数据
   office: {
     title: "Usage Evidence for Microsoft Suite:",
     items: [
-      { label: "Audit Intern @ Huaxing CPA", href: "#exp-audit", meta: "Advanced Excel for financial variance analysis and data reconciliation" },
-      { label: "Investment Assistant @ Haitong", href: "#exp-securities", meta: "PowerPoint for daily/weekly market trend reporting and client insights" }
+      { label: "Audit Intern @ Huaxing CPA", href: "#exp-audit", meta: "Advanced Excel (VLOOKUP, Pivot Tables) for financial variance analysis" },
+      { label: "Investment Assistant @ Haitong", href: "#exp-securities", meta: "Professional reporting and market presentations using PowerPoint and Excel" }
     ]
   }
 };
@@ -134,16 +81,13 @@ const tabs = document.querySelectorAll(".skill-tab");
 const evidenceTitle = document.getElementById("evidence-title");
 const evidenceList = document.getElementById("evidence-list");
 
+// 渲染内容的函数
 function renderEvidence(key) {
   const data = evidenceData[key];
-  if (!data) {
-    console.error("No data found for skill:", key);
-    return;
-  }
+  if (!data) return;
 
-  // 清空旧内容
-  evidenceList.innerHTML = "";
   evidenceTitle.textContent = data.title;
+  evidenceList.innerHTML = ""; // 清空当前列表
 
   data.items.forEach(it => {
     const row = document.createElement("div");
@@ -159,15 +103,27 @@ function renderEvidence(key) {
   });
 }
 
-// 绑定点击事件
+// 绑定 Tab 点击事件
 tabs.forEach(t => {
   t.addEventListener("click", () => {
-    tabs.forEach(x => x.classList.remove("active"));
+    // 切换激活状态样式
+    tabs.forEach(x => {
+      x.classList.remove("active");
+      x.setAttribute("aria-selected", "false");
+    });
     t.classList.add("active");
+    t.setAttribute("aria-selected", "true");
+    
+    // 执行渲染
     renderEvidence(t.dataset.skill);
   });
 });
 
-// default select
-const defaultTab = document.querySelector('.skill-tab[data-skill="python_nlp"]') || document.querySelector('.skill-tab[data-skill="sql"]');
-if (defaultTab) defaultTab.click();
+// ===== 5. 页面加载后的默认行为 =====
+document.addEventListener("DOMContentLoaded", () => {
+  // 默认选中 Python (你截图里的效果)
+  const defaultTab = document.querySelector('.skill-tab[data-skill="python_nlp"]');
+  if (defaultTab) {
+    defaultTab.click();
+  }
+});
