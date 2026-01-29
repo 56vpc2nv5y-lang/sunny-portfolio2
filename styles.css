@@ -488,3 +488,110 @@ p{line-height:1.65}
   transform: translateY(-8px);
   box-shadow: 0 18px 40px rgba(15,23,42,.14);
 }
+
+/* =========================================
+   TIMELINE DESIGN (时间轴样式整合)
+   ========================================= */
+
+/* 1. 布局结构：左右两栏 */
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  position: relative;
+}
+
+@media (max-width: 800px) {
+  .split-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* 2. 栏目标题 */
+.col-title {
+  font-size: 20px;
+  color: #1e3a8a; /* 深蓝 */
+  margin-bottom: 24px;
+  padding-left: 12px;
+  border-left: 4px solid #bfdbfe;
+}
+
+.timeline-column {
+  position: relative;
+  border-left: 2px solid #e2e8f0; /* 灰色的竖线 */
+  padding-left: 24px;
+}
+
+/* 3. 时间轴上的蓝色小圆点 */
+.time-marker {
+  position: absolute;
+  left: -31px; /* 对齐竖线 */
+  top: 24px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border: 2px solid #2563eb;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* 4. 卡片样式 (Timeline Card) */
+.time-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px; /* 紧凑内边距 */
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(15,23,42,.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.time-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(15,23,42,.08);
+  border-color: #93c5fd;
+}
+
+/* 5. 紧凑的头部设计 (去除大图标，改为文字排版) */
+.small-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.project-head-left { flex: 1; }
+
+.time-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.time-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+/* 6. 紧凑的标签行 */
+.pillrow.compact {
+  margin-top: 6px;
+  gap: 6px;
+}
+
+.pillrow.compact .tag {
+  padding: 4px 8px;
+  font-size: 11px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  border-radius: 99px;
+}
