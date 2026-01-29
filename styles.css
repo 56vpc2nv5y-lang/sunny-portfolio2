@@ -1,6 +1,3 @@
-/* =========================================
-   BASE STYLES (基础样式)
-   ========================================= */
 :root {
   --bg: #ffffff;
   --panel: #ffffff;
@@ -18,7 +15,7 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -29,7 +26,7 @@ a { color: inherit; text-decoration: none; }
 /* Top bar */
 .topbar {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
@@ -140,7 +137,8 @@ p { line-height: 1.65; }
 
 
 /* =========================================
-   1. EDUCATION CARD DESIGN (修复 Education 为图2 样式)
+   1. EDUCATION CARD DESIGN (这就是你想要的图2样式)
+   注意：必须配合你现在 HTML 里的 .education-grid 才能生效
    ========================================= */
 
 .education-grid {
@@ -211,7 +209,7 @@ p { line-height: 1.65; }
   background-size: 1rem 1rem;
 }
 
-/* 课程标签样式 (绿色 A+) */
+/* 课程标签样式 (图2中的绿色标签) */
 .edu-modules { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
 .module-tag {
   font-size: 12px; padding: 6px 12px; border-radius: 8px; font-weight: 600;
@@ -225,7 +223,7 @@ p { line-height: 1.65; }
 
 
 /* =========================================
-   2. TIMELINE DESIGN (修复 Timeline 挤压问题)
+   2. TIMELINE DESIGN (修复文字挤压，实现图4效果)
    ========================================= */
 
 /* 布局结构 */
@@ -248,11 +246,11 @@ p { line-height: 1.65; }
   border: 2px solid #2563eb; border-radius: 50%; z-index: 2;
 }
 
-/* Timeline 卡片 */
+/* Timeline 卡片 - 这里加 relative 是为了让按钮能绝对定位 */
 .time-card {
-  position: relative; /* 关键：为了让按钮绝对定位 */
+  position: relative; 
   background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;
-  padding: 20px; /* 增加内边距 */
+  padding: 20px;
   margin-bottom: 24px;
   box-shadow: 0 4px 12px rgba(15,23,42,.03);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -261,9 +259,10 @@ p { line-height: 1.65; }
   transform: translateY(-4px); box-shadow: 0 10px 20px rgba(15,23,42,.08); border-color: #93c5fd;
 }
 
-/* 头部布局：改用 block，并把按钮绝对定位到右上角 */
+/* 头部布局：【关键修改】取消 Flex，改用 Block */
+/* 这样左边的文字就可以占满宽度，不会被右边挤压 */
 .small-head {
-  display: block; /* 取消 flex */
+  display: block; 
   padding-right: 40px; /* 右侧留出空间给按钮，防止文字被盖住 */
 }
 
@@ -286,10 +285,10 @@ p { line-height: 1.65; }
   border: 1px solid #bfdbfe; color: #1d4ed8; border-radius: 99px;
 }
 
-/* 按钮绝对定位到右上角 (解决挤压的关键代码) */
+/* 按钮绝对定位到右上角 (解决挤压的核心代码) */
 .time-card .proj-toggle {
   position: absolute;
-  top: 20px; right: 20px;
+  top: 20px; right: 20px; /* 强制固定在右上角 */
   width: 32px; height: 32px;
   border-radius: 8px; border: 1px solid #e2e8f0; background: #fff;
   cursor: pointer; display: flex; align-items: center; justify-content: center;
